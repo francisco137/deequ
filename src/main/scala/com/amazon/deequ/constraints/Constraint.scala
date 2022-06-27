@@ -32,6 +32,15 @@ case class ConstraintResult(
     message: Option[String] = None,
     metric: Option[Metric[_]] = None)
 
+case class ConstraintInfo
+(
+  constraint: String = "",
+  description: String = "",
+  columns: Seq[String] = Seq(),
+  where: Option[String] = None,
+  other: Seq[Any] = Seq()
+)
+
 /** Common trait for all data quality constraints */
 trait Constraint {
   def evaluate(analysisResults: Map[Analyzer[_, Metric[_]], Metric[_]]): ConstraintResult
